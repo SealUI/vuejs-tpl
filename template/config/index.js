@@ -16,8 +16,8 @@ module.exports = {
     productionGzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report
   },
-  qa: {
-    env: require('./qa.env'),
+  qatest: {
+    env: require('./qatest.env'),
     index: path.resolve(viewSVN, '../dist/index.html'),
     assetsRoot: path.resolve(resSVN, '../dist'),
     assetsSubDirectory: 'static',

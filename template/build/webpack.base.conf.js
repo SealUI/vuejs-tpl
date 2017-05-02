@@ -14,8 +14,8 @@ if(process.env.NODE_ENV === 'production'){
   publicPath = config.build.assetsPublicPath
 }else if(process.env.NODE_ENV === 'demo'){
   publicPath = config.demo.assetsPublicPath
-}else if(process.env.NODE_ENV === 'qa'){
-  publicPath = config.qa.assetsPublicPath
+}else if(process.env.NODE_ENV === 'qatest'){
+  publicPath = config.qatest.assetsPublicPath
 }else{
   publicPath = config.dev.assetsPublicPath
 }
