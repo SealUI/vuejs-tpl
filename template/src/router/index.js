@@ -6,13 +6,13 @@ Vue.use(Router){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export default new Router({
 	mode:'history',
-  base:__dirname,
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: resolve => require(['@/views/List'], resolve){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-      //component: Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  ]{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+	base:__dirname,
+	routes: [
+		{
+			path: '/',
+			name: 'Hello',
+			component: resolve => require(['@/views/Hello'], resolve){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+			//component: Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+		}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+	]{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
