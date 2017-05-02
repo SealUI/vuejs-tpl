@@ -6,6 +6,9 @@
 import NProgress from 'nprogress'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import 'nprogress/nprogress.css'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/nprogress}}
+{{#axios}}
+require('es6-promise').polyfill(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/axios}}
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#router}}

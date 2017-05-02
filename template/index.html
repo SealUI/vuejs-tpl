@@ -18,6 +18,15 @@
   </head>
   <body>
     <div id="app"></div>
+    <% if (process.env.NODE_ENV !== 'development') { %>
+    <script src="https://unpkg.com/vue@2.3.1/dist/vue.min.js"></script>
+    {{#router}}
+    <script src="https://unpkg.com/vue-router@2.5.3/dist/vue-router.min.js"></script>
+    {{/router}}
+    {{#axios}}
+    <script src="https://unpkg.com/axios@0.16.1/dist/axios.min.js"></script>
+    {{/axios}}
+    <% } %>
     <!-- built files will be auto injected -->
   </body>
 </html>
