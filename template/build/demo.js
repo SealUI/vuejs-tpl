@@ -1,6 +1,6 @@
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'demo'
 
 var ora = require('ora')
 var rm = require('rimraf')
@@ -10,7 +10,7 @@ var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.demo.conf')
 
-var spinner = ora('building for production...')
+var spinner = ora('开始构建 [演示环境]...')
 spinner.start()
 
 rm(path.join(config.demo.assetsRoot, config.demo.assetsSubDirectory), err => {
@@ -26,10 +26,9 @@ rm(path.join(config.demo.assetsRoot, config.demo.assetsSubDirectory), err => {
       chunkModules: false
     }) + '\n\n')
 
-    console.log(chalk.cyan('  Build complete.\n'))
+    console.log(chalk.cyan('  演示环境构建完成.\n'))
     console.log(chalk.yellow(
-      '  Tip: built files are meant to be served over an HTTP server.\n' +
-      '  Opening index.html over file:// won\'t work.\n'
+      '  提示: 非开发环境，请发布到线上环境进行测试.\n'
     ))
   })
 })

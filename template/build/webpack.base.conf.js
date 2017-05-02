@@ -2,10 +2,28 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require("webpack");
+const pkg = require('../package.json')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+
+var publicPath;
+if(process.env.NODE_ENV === 'production'){
+  publicPath = config.build.assetsPublicPath
+}else if(process.env.NODE_ENV === 'demo'){
+  publicPath = config.demo.assetsPublicPath
+}else if(process.env.NODE_ENV === 'qa'){
+  publicPath = config.qa.assetsPublicPath
+}else{
+  publicPath = config.dev.assetsPublicPath
+}
+var banner = [
+  pkg.name + ' v'+pkg.version,
+  ' Author    : '+pkg.author,
+  ' Copyright : '+new Date().getFullYear()+' Speiyou'
+  ].join('\n');
 
 module.exports = {
   entry: {
@@ -14,9 +32,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: publicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -24,6 +40,8 @@ module.exports = {
       {{#if_eq build "standalone"}}
       'vue$': 'vue/dist/vue.esm.js',
       {{/if_eq}}
+      'assets': path.resolve(__dirname, '../src/assets'),
+      'components': path.resolve(__dirname, '../src/components'),
       '@': resolve('src')
     }
   },
@@ -67,5 +85,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+      new webpack.BannerPlugin(banner)
+  ]
 }

@@ -12,17 +12,17 @@ module.exports = {
     "name": {
       "type": "string",
       "required": true,
-      "message": "Project name"
+      "message": "项目名称"
     },
     "description": {
       "type": "string",
       "required": false,
-      "message": "Project description",
+      "message": "项目描述",
       "default": "A Vue.js project"
     },
     "author": {
       "type": "string",
-      "message": "Author"
+      "message": "开发者"
     },
     "build": {
       "type": "list",
@@ -42,16 +42,24 @@ module.exports = {
     },
     "router": {
       "type": "confirm",
-      "message": "Install vue-router?"
+      "message": "是否安装 vue-router?"
+    },
+    "axios": {
+      "type": "confirm",
+      "message": "是否安装 axios?"
+    },
+    "nprogress":{
+      "type": "confirm",
+      "message": "是否安装 Nprogress?"
     },
     "lint": {
       "type": "confirm",
-      "message": "Use ESLint to lint your code?"
+      "message": "是否使用 ESLint 检查代码?"
     },
     "lintConfig": {
       "when": "lint",
       "type": "list",
-      "message": "Pick an ESLint preset",
+      "message": "选择一个ESLint预设",
       "choices": [
         {
           "name": "Standard (https://github.com/feross/standard)",
@@ -88,5 +96,5 @@ module.exports = {
     "test/e2e/**/*": "e2e",
     "src/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev"
 };

@@ -26,16 +26,24 @@ var webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[chunkhash:20].js'),
     chunkFilename: utils.assetsPath('js/[chunkhash:20].js')
   },
+  externals : {
+    "vue": "Vue",
+    "axios" : "axios"
+  },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
+			compress: {
+				warnings: false,
+				drop_console: true,
+			},
+			output : {
+				ascii_only : true,
+				space_colon : false
+			}
     }),
     // extract css into its own file
     new ExtractTextPlugin({

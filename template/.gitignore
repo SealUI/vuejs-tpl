@@ -4,6 +4,15 @@ dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+config/
+build/
+src/
+static/
+.gitignore
+.editorconfig
+.babelrc
+.postcssrc.js
+package.json
 {{#unit}}
 test/unit/coverage
 {{/unit}}

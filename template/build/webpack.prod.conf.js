@@ -23,8 +23,12 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('js/[chunkhash:20].js'),
+    chunkFilename: utils.assetsPath('js/[chunkhash:20].js')
+  },
+  externals : {
+    "vue": "Vue",
+    "axios" : "axios"
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -32,14 +36,18 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
+			compress: {
+				warnings: false,
+				drop_console: true,
+			},
+			output : {
+				ascii_only : true,
+				space_colon : false
+			}
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      filename: utils.assetsPath('css/[contenthash:20].css')
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -60,7 +68,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: false
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
